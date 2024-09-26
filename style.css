@@ -1,0 +1,176 @@
+/* Estilo geral */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0e0e0e;
+    color: #f2f2f2;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* Estilo principal do app */
+#app {
+    width: 80%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Container de toda a área do jogo */
+.game-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+/* Estilo das personagens */
+.characters {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.character {
+    background: linear-gradient(145deg, #0d1b2a, #1b263b);
+    border: 2px solid #03fcfc;
+    padding: 20px;
+    border-radius: 10px;
+    color: #03fcfc;
+    width: 200px;
+    text-align: center;
+}
+
+/* Estilo da div sprite */
+.sprite {
+    width: 100%;
+    height: auto;
+    background-color: #1b263b;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sprite img.character-image {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Estilo dos botões */
+.actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #03fcfc;
+    color: #0e0e0e;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #00d1d1;
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+/* Barra de vida */
+.life-bar {
+    height: 30px;
+    background: #ff00c8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #fff;
+    width: 100%;
+}
+
+/* Log de Ações */
+.action-log {
+    background-color: #1b263b;
+    border: 2px solid #ff00c8;
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.action-log h2 {
+    text-align: center;
+}
+
+.action-log ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.action-log li {
+    margin-bottom: 10px;
+}
+
+/* Botão de expandir/minimizar */
+.action-log-toggle {
+    display: none; /* Inicialmente escondido no desktop */
+    margin-top: 10px;
+    background-color: #ff00c8;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo para expandir a área de log no mobile */
+.action-log.hidden {
+    display: none;
+}
+
+/* Controles de música */
+.music-controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.music-controls button {
+    background-color: #ff00c8;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.music-controls button:hover {
+    background-color: #ff33cc;
+}
+
+.music-controls input[type="range"] {
+    width: 100px;
+    margin-left: 10px;
+}

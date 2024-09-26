@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova - Jogo Heroi vs Vilão</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <!-- Música de fundo -->
+    <audio ref="audio" src="./battle-theme.mp3" loop></audio>
+
+    <div v-if="gameOver" class="game-over">
+        <h2>{{ message }}</h2>
+        <button @click="restartGame">Tentar novamente</button>
+    </div>
+
+    <div v-else class="game-container">
+        <div class="characters">
+            <div class="character">
+                <div class="life-bar" :style="{ width: hero.life + '%', backgroundColor: hero.life > 50 ? '#03fcfc' : hero.life > 20 ? '#ffcc00' : '#ff0000' }">Vida: {{hero.life}}</div>
+                <div class="sprite">
+                    <img src="./Hero.gif" alt="Herói" class="character-image">
+                </div>
+                <h1>{{hero.name}}</h1>
+                <div class="actions">
+                    <button @click="attack(true)">Atacar</button>
+                    <button @click="defense(true)">Defender</button>
+                    <button @click="usePotion(true)">Usar Poção</button>
+                    <button @click="flee(true)">Correr</button>
+                </div>
+            </div>
+            <div class="character">
+                <div class="life-bar" :style="{ width: villain.life + '%', backgroundColor: villain.life > 50 ? '#03fcfc' : villain.life > 20 ? '#ffcc00' : '#ff0000' }">Vida: {{villain.life}}</div>
+                <div class="sprite">
+                    <img src="./Villain.gif" alt="Vilão" class="character-image">
+                </div>
+                <h1>{{villain.name}}</h1>
+            </div>
+        </div>
+
+        <!-- Controle de som -->
+        <div class="sound-controls">
+            <button @click="toggleMute">{{ isMuted ? "Desmutar" : "Mutar" }}</button>
+            <label>Volume:
+                <input type="range" min="0" max="1" step="0.1" v-model="volume" @input="adjustVolume">
+            </label>
+        </div>
+
+        <!-- Painel lateral para descrever as ações -->
+        <div class="action-log">
+            <h2>Log de Ações</h2>
+            <ul>
+                <li v-for="(action, index) in displayedLogs" :key="index">{{ action }}</li>
+            </ul>
+            <button @click="toggleLogs">{{ showAllLogs ? "Minimizar" : "Expandir" }} Logs</button>
+        </div>
+    </div>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
